@@ -1,0 +1,40 @@
+# Секреты
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Виртуальные окружения
+venv/
+.venv/
+env/
+ENV/
+
+# Логи и рантайм-данные
+logs/
+*.log
+backups/
+*.pickle
+
+# Excel с данными клиентов
+DC_Cargo.xlsx
+Kayhon.xlsx
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code
+.claude/
+
+# OS
+Thumbs.db
+.DS_Store
