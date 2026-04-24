@@ -38,3 +38,7 @@ Kayhon.xlsx
 # OS
 Thumbs.db
 .DS_Store
+
+# Node (случайно создаётся IDE)
+package-lock.json
+node_modules/

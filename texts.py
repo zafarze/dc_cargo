@@ -5,6 +5,9 @@ from config import XLSX_FILENAME
 CONTACT_PHONE_DISPLAY = "+992 11 155 53 95"
 CONTACT_PHONE_TEL = "+992111555395"
 OPERATOR_LINK = "t.me/SALVATORZODA"
+INSTAGRAM_LINK = "https://instagram.com/dc_cargo1"
+INSTAGRAM_HANDLE = "dc_cargo1"
+TELEGRAM_CHANNEL_LINK = "https://t.me/dc_cargo1"
 
 _CHINA_ADDRESS_RU = (
     "🏭 <b>Адрес в Китае:</b>\n\n"
@@ -29,19 +32,25 @@ _CHINA_ADDRESS_EN = (
 )
 
 _TJ_CONTACT_RU = (
-    f"📍 <b>Получение груза в Душанбе:</b>\n\n"
+    "📍 <b>Наш адрес в Душанбе:</b>\n"
+    "г. Душанбе, улица Собира Абдуллоева, 28\n"
+    "<i>Ориентир: напротив Бозори Чал-Чам — Кухна</i>\n\n"
     f"📞 Телефон: <code>{CONTACT_PHONE_DISPLAY}</code>\n"
     f"💬 Оператор: {OPERATOR_LINK}\n\n"
     "Свяжитесь с оператором, чтобы уточнить время и место выдачи."
 )
 _TJ_CONTACT_TG = (
-    f"📍 <b>Гирифтани бор дар Душанбе:</b>\n\n"
+    "📍 <b>Суроғаи мо дар Душанбе:</b>\n"
+    "ш. Душанбе, кӯчаи Собир Абдуллоев, 28\n"
+    "<i>Ориентир: рӯ ба рӯи Бозори Чал-Чам — Кӯҳна</i>\n\n"
     f"📞 Телефон: <code>{CONTACT_PHONE_DISPLAY}</code>\n"
     f"💬 Оператор: {OPERATOR_LINK}\n\n"
     "Барои донистани вақт ва маҳали супурдани бор бо оператор тамос гиред."
 )
 _TJ_CONTACT_EN = (
-    f"📍 <b>Pick-up in Dushanbe:</b>\n\n"
+    "📍 <b>Our address in Dushanbe:</b>\n"
+    "Dushanbe, Sobir Abdulloev street, 28\n"
+    "<i>Landmark: opposite Chal-Cham Kuhna bazaar</i>\n\n"
     f"📞 Phone: <code>{CONTACT_PHONE_DISPLAY}</code>\n"
     f"💬 Operator: {OPERATOR_LINK}\n\n"
     "Contact the operator to arrange pick-up time and place."
@@ -95,18 +104,24 @@ TEXTS = {
         "contacts": (
             "<b>DC Cargo</b>\n"
             "Режим работы: с 9:00 до 18:00\n"
-            "Перерыв: с 12:45 до 14:00\n\n"
-            f"💬 Оператор: {OPERATOR_LINK}"
+            "Перерыв: с 12:00 до 13:00\n\n"
+            f"💬 Оператор: {OPERATOR_LINK}\n"
+            f"📸 Instagram: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a>\n"
+            f"📢 Telegram-канал: {TELEGRAM_CHANNEL_LINK}"
         ),
         "prices_text": (
             "<b>Наши тарифы</b>\n\n"
             "🇨🇳 Иу — Душанбе 🇹🇯\n"
             "Срок доставки: 12-20 дней\n\n"
-            "🚚 От 1 до 20 кг: <b>2.4$</b>\n"
-            "🚚 От 20 до 30 кг: <b>2.2$</b>\n"
-            "🚚 От 30 кг и выше: <b>2.0$</b>\n"
+            "🚚 От 1 до 30 кг: <b>2.5$</b>\n"
+            "🚚 От 30 до 50 кг: <b>2.3$</b>\n"
+            "🚚 От 50 кг и выше: <b>2.0$</b>\n"
             "📦 За 1 куб: <b>250$</b>\n\n"
-            "⚠️ Крупногабаритные грузы рассчитываются по кубам."
+            "⚠️ Крупногабаритные грузы рассчитываются по кубам.\n\n"
+            "💼 <b>От 200 кг — цена договорная.</b>\n"
+            "Возможна скидка или индивидуальные условия.\n"
+            f"✍️ Напишите нам в Direct: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a> "
+            f"или оператору: {OPERATOR_LINK}"
         ),
         "forbidden_text": (
             "<b>Запрещённые товары:</b>\n"
@@ -308,18 +323,24 @@ TEXTS = {
         "contacts": (
             "<b>DC Cargo</b>\n"
             "Working hours: 9:00 to 18:00\n"
-            "Break: 12:45 to 14:00\n\n"
-            f"💬 Operator: {OPERATOR_LINK}"
+            "Break: 12:00 to 13:00\n\n"
+            f"💬 Operator: {OPERATOR_LINK}\n"
+            f"📸 Instagram: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a>\n"
+            f"📢 Telegram channel: {TELEGRAM_CHANNEL_LINK}"
         ),
         "prices_text": (
             "<b>Our Rates</b>\n\n"
             "🇨🇳 Yiwu — Dushanbe 🇹🇯\n"
             "Delivery time: 12-20 days\n\n"
-            "🚚 1 to 20 kg: <b>2.4$</b>\n"
-            "🚚 20 to 30 kg: <b>2.2$</b>\n"
-            "🚚 30 kg and above: <b>2.0$</b>\n"
+            "🚚 1 to 30 kg: <b>2.5$</b>\n"
+            "🚚 30 to 50 kg: <b>2.3$</b>\n"
+            "🚚 50 kg and above: <b>2.0$</b>\n"
             "📦 Per cubic meter: <b>250$</b>\n\n"
-            "⚠️ Oversized cargo is calculated as cube."
+            "⚠️ Oversized cargo is calculated as cube.\n\n"
+            "💼 <b>From 200 kg — price is negotiable.</b>\n"
+            "Discounts and individual terms are possible.\n"
+            f"✍️ DM us on Instagram: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a> "
+            f"or contact the operator: {OPERATOR_LINK}"
         ),
         "forbidden_text": (
             "<b>Prohibited Items:</b>\n"
@@ -520,18 +541,24 @@ TEXTS = {
         "contacts": (
             "<b>DC Cargo</b>\n"
             "Реҷаи корӣ: 9:00 - 18:00\n"
-            "Танаффус: 12:45 - 14:00\n\n"
-            f"💬 Оператор: {OPERATOR_LINK}"
+            "Танаффус: 12:00 - 13:00\n\n"
+            f"💬 Оператор: {OPERATOR_LINK}\n"
+            f"📸 Instagram: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a>\n"
+            f"📢 Канали Telegram: {TELEGRAM_CHANNEL_LINK}"
         ),
         "prices_text": (
             "<b>Нархномаи мо</b>\n\n"
             "🇨🇳 Иу — Душанбе 🇹🇯\n"
             "Мӯҳлат: 12-20 рӯз\n\n"
-            "🚚 Аз 1 то 20 кг: <b>2.4$</b>\n"
-            "🚚 Аз 20 то 30 кг: <b>2.2$</b>\n"
-            "🚚 Аз 30 кг боло: <b>2.0$</b>\n"
+            "🚚 Аз 1 то 30 кг: <b>2.5$</b>\n"
+            "🚚 Аз 30 то 50 кг: <b>2.3$</b>\n"
+            "🚚 Аз 50 кг боло: <b>2.0$</b>\n"
             "📦 1 куб: <b>250$</b>\n\n"
-            "⚠️ Борҳои калонҳаҷм чун куб ҳисоб мешаванд."
+            "⚠️ Борҳои калонҳаҷм чун куб ҳисоб мешаванд.\n\n"
+            "💼 <b>Аз 200 кг боло — нарх шартномавӣ.</b>\n"
+            "Тахфиф ё шартҳои инфиродӣ имконпазиранд.\n"
+            f"✍️ Ба Direct нависед: <a href=\"{INSTAGRAM_LINK}\">@{INSTAGRAM_HANDLE}</a> "
+            f"ё ба оператор: {OPERATOR_LINK}"
         ),
         "forbidden_text": (
             "<b>Молҳои манъшуда:</b>\n"

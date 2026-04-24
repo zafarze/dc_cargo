@@ -56,13 +56,19 @@ except Exception as e:
 
 CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "")  # опционально
 
+# --- Склад в Душанбе (для send_venue) ---
+WAREHOUSE_DUSHANBE_LAT = 38.545857
+WAREHOUSE_DUSHANBE_LON = 68.752327
+WAREHOUSE_DUSHANBE_TITLE = "DC Cargo — склад в Душанбе"
+WAREHOUSE_DUSHANBE_ADDRESS = "ул. Собира Абдуллоева, 28 (напротив Бозори Чал-Чам)"
+
 # --- Фото (берём из app/img/) ---
 IMG_DIR = BASE_DIR / "img"
-PHOTO_CONTACT_PATH = IMG_DIR / "contact.JPG"
+PHOTO_CONTACT_PATH = IMG_DIR / "contact.png"
 PHOTO_PRICE_PATH = IMG_DIR / "price.JPG"
 # У DC Cargo пока один файл адреса — используем его и для Таджикистана, и для Китая.
-PHOTO_ADDRESS_TAJIK_PATH = IMG_DIR / "address.PNG"
-PHOTO_ADDRESS_CHINA_PATH = IMG_DIR / "address.PNG"
+PHOTO_ADDRESS_TAJIK_PATH = IMG_DIR / "adress_tj.JPG"
+PHOTO_ADDRESS_CHINA_PATH = IMG_DIR / "address.jpg"
 
 for name, path in [
     ("Контакты", PHOTO_CONTACT_PATH),

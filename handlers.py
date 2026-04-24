@@ -36,6 +36,9 @@ from config import (
     PHOTO_CONTACT_PATH,
     PHOTO_PRICE_PATH,
     PHOTO_ADDRESS_CHINA_PATH,
+    PHOTO_ADDRESS_TAJIK_PATH,
+    WAREHOUSE_DUSHANBE_LAT, WAREHOUSE_DUSHANBE_LON,
+    WAREHOUSE_DUSHANBE_TITLE, WAREHOUSE_DUSHANBE_ADDRESS,
     START_ROUTES, AWAITING_SUBSCRIPTION, MAIN_MENU, LK_MENU, ADMIN_MENU,
     AWAITING_FULL_NAME, AWAITING_PHONE, AWAITING_ADDRESS, AWAITING_LANG_CHOICE,
     AWAITING_TRACK_CODE,
@@ -503,11 +506,39 @@ async def show_address_callback(update, context):
             text_fallback=get_text('photo_address_error', lang).format(address=caption)
         )
     else:
+        try:
+            await context.bot.send_venue(
+                chat_id=query.message.chat_id,
+                latitude=WAREHOUSE_DUSHANBE_LAT,
+                longitude=WAREHOUSE_DUSHANBE_LON,
+                title=WAREHOUSE_DUSHANBE_TITLE,
+                address=WAREHOUSE_DUSHANBE_ADDRESS,
+            )
+        except Exception as e:
+            logger.warning(f"send_venue failed: {e}")
+
         caption = get_text('address_caption_tajikistan', lang)
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton(f"💬 {OPERATOR_LINK}", url=f"https://{OPERATOR_LINK}")]
         ])
-        await query.message.reply_text(caption, parse_mode=ParseMode.HTML, reply_markup=keyboard)
+
+        sent_with_photo = False
+        if os.path.exists(PHOTO_ADDRESS_TAJIK_PATH):
+            try:
+                with open(PHOTO_ADDRESS_TAJIK_PATH, 'rb') as photo:
+                    await context.bot.send_photo(
+                        chat_id=query.message.chat_id,
+                        photo=photo,
+                        caption=caption,
+                        parse_mode=ParseMode.HTML,
+                        reply_markup=keyboard,
+                    )
+                sent_with_photo = True
+            except Exception as e:
+                logger.warning(f"send_photo tajik failed: {e}")
+
+        if not sent_with_photo:
+            await query.message.reply_text(caption, parse_mode=ParseMode.HTML, reply_markup=keyboard)
 
     return MAIN_MENU
 
