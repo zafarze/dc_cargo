@@ -40,6 +40,7 @@ ADMIN_USER_IDS = [
     8039418689,
     6778668416, #Alijon
     8522797568, #Saif
+    5675203623, #Алиҷон
     
 ]
 logger.info(f"Загружено {len(ADMIN_USER_IDS)} ID администраторов")
