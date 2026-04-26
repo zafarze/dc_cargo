@@ -37,9 +37,10 @@ ORDERS_TABLE = "dc_orders"
 # --- Администраторы DC Cargo ---
 ADMIN_USER_IDS = [
     515809298,    # Zafar
-    6731186191,
     8039418689,
-    1145858753,
+    6778668416, #Alijon
+    8522797568, #Saif
+    
 ]
 logger.info(f"Загружено {len(ADMIN_USER_IDS)} ID администраторов")
 
