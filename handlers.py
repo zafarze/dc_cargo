@@ -4,7 +4,7 @@ import os
 import asyncio
 import re
 import uuid
-from datetime import datetime
+from datetime import datetime, date as _date
 
 import pandas as pd
 
@@ -82,6 +82,22 @@ from admin_utils import notify_admins
 def get_text(key, lang='ru', default_lang='ru', fallback=None):
     default_value = fallback if fallback is not None else f"<{key}>"
     return TEXTS.get(lang, {}).get(key) or TEXTS.get(default_lang, {}).get(key, default_value)
+
+
+def format_date_display(value):
+    if value is None or value == "" or value == "N/A":
+        return "N/A"
+    if isinstance(value, datetime):
+        return value.strftime("%d.%m.%Y")
+    if isinstance(value, _date):
+        return value.strftime("%d.%m.%Y")
+    s = str(value).strip()
+    for fmt in ("%Y-%m-%d", "%Y-%m-%d %H:%M:%S", "%d.%m.%Y", "%d/%m/%Y"):
+        try:
+            return datetime.strptime(s, fmt).strftime("%d.%m.%Y")
+        except ValueError:
+            continue
+    return s
 
 
 def get_main_keyboard(lang, is_admin_user=False):
@@ -365,15 +381,15 @@ async def build_status_text_safe(order, lang):
     track_code = order['track_code']
 
     if order.get('status_delivered'):
-        date_str = order.get('date_delivered') or "N/A"
+        date_str = format_date_display(order.get('date_delivered'))
         return get_text('track_code_found_other', lang).format(
             code=track_code, status=f"{order['status_delivered']} ({date_str})"
         )
     if order.get('status_dushanbe'):
-        date_str = order.get('date_dushanbe') or "N/A"
+        date_str = format_date_display(order.get('date_dushanbe'))
         return get_text('track_code_found_dushanbe', lang).format(code=track_code, date=date_str)
     if order.get('status_yiwu'):
-        date_str = order.get('date_yiwu') or "N/A"
+        date_str = format_date_display(order.get('date_yiwu'))
         return get_text('track_code_found_yiwu', lang).format(code=track_code, date=date_str)
 
     return get_text('track_code_found_other', lang).format(code=track_code, status="В обработке")
@@ -657,16 +673,16 @@ async def lk_show_orders(update, context):
     for order in orders:
         if order.get('status_delivered') == 'Доставлен':
             status_text = get_text('status_delivered', lang)
-            date_text = order.get('date_delivered') or "N/A"
+            date_text = format_date_display(order.get('date_delivered'))
         elif order.get('status_delivered') == 'Запрошена':
             status_text = get_text('status_deliveryrequested', lang)
-            date_text = order.get('date_dushanbe') or "N/A"
+            date_text = format_date_display(order.get('date_dushanbe'))
         elif order.get('status_dushanbe'):
             status_text = get_text('status_dushanbe', lang)
-            date_text = order.get('date_dushanbe') or "N/A"
+            date_text = format_date_display(order.get('date_dushanbe'))
         elif order.get('status_yiwu'):
             status_text = get_text('status_yiwu', lang)
-            date_text = order.get('date_yiwu') or "N/A"
+            date_text = format_date_display(order.get('date_yiwu'))
         else:
             status_text = "В обработке"
             date_text = "N/A"
@@ -718,7 +734,7 @@ async def lk_show_archive(update, context):
 
     for order in orders:
         status_text = get_text('status_delivered', lang)
-        date_text = order.get('date_delivered') or "N/A"
+        date_text = format_date_display(order.get('date_delivered'))
         order_str = get_text('lk_order_item', lang).format(
             code=order['track_code'], status=status_text, date=date_text
         )
@@ -1202,11 +1218,7 @@ async def admin_show_delivered_list(update, context):
 
     response = f"{get_text('admin_delivered_list_title', lang)}\nСтраница {page} (всего: {total})\n\n"
     for o in orders:
-        try:
-            d = o['date_delivered']
-            date_str = d.strftime('%Y-%m-%d') if isinstance(d, datetime) else str(d or 'N/A')
-        except Exception:
-            date_str = str(o.get('date_delivered') or 'N/A')
+        date_str = format_date_display(o.get('date_delivered'))
         response += get_text('admin_delivered_item', 'ru').format(
             code=o['track_code'], full_name=o.get('full_name') or 'N/A', date=date_str
         )
